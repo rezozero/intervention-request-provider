@@ -1,5 +1,5 @@
 {
-    "name": "intervention-request-provider",
+    "name": "@rezo-zero/intervention-request-provider",
     "version": "0.0.1",
     "description": "InterventionRequest provider for @nuxt/image",
     "main": "dist/index.js",
