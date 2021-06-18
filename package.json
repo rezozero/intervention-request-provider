@@ -1,0 +1,52 @@
+{
+    "name": "intervention-request-provider",
+    "version": "0.0.1",
+    "description": "InterventionRequest provider for @nuxt/image",
+    "main": "dist/index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "build": "babel index.ts --out-file dist/index.js --extensions \".ts\"",
+        "dev": "yarn build --watch & yarn nuxt playground",
+        "prepublishOnly": "yarn build",
+        "lint": "eslint --fix --ext \".js,.ts,.json\" ."
+    },
+    "files": [
+        "dist"
+    ],
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/rezozero/intervention-request-provider.git"
+    },
+    "keywords": [
+        "nuxt",
+        "nuxtjs",
+        "image",
+        "@nuxt/image",
+        "provider"
+    ],
+    "author": "",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/rezozero/intervention-request-provider/issues"
+    },
+    "homepage": "https://github.com/rezozero/intervention-request-provider#readme",
+    "dependencies": {
+        "ufo": "^0.7.5"
+    },
+    "devDependencies": {
+        "@babel/cli": "^7.14.5",
+        "@babel/preset-env": "^7.14.5",
+        "@babel/preset-typescript": "^7.14.5",
+        "@nuxt/image": "^0.4.14",
+        "@nuxt/types": "^2.15.7",
+        "@typescript-eslint/eslint-plugin": "^4.27.0",
+        "@typescript-eslint/parser": "^4.27.0",
+        "babel-core": "^6.26.3",
+        "eslint": "^7.28.0",
+        "eslint-config-prettier": "^8.3.0",
+        "eslint-plugin-prettier": "^3.4.0",
+        "nuxt": "^2.15.7",
+        "prettier": "^2.3.1",
+        "typescript": "^4.3.2"
+    }
+}
