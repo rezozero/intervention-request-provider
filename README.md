@@ -29,8 +29,6 @@ nuxt.config
     }
 ```
 
-or
-
 - As a @nuxt/image provider option
 
 nuxt.config
@@ -46,9 +44,9 @@ nuxt.config
     }
 ```
 
-### imagesPath (see [InterventionRequest doc](https://github.com/ambroisemaupate/intervention-request#configuration))
+### imagesPath (see [InterventionRequest configuration](https://github.com/ambroisemaupate/intervention-request#configuration))
 
-nuxt.config.ts
+nuxt.config
 ```js
     image: {
         providers: {
@@ -64,7 +62,7 @@ nuxt.config.ts
 
 
 ## Operations available
-See [InterventionRequestions operations](https://github.com/ambroisemaupate/intervention-request#available-operations)
+See [InterventionRequest operations](https://github.com/ambroisemaupate/intervention-request#available-operations)
 
 ## Contributing
 
