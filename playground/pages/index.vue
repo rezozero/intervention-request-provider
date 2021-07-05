@@ -1,5 +1,5 @@
 <template>
   <div>
-    <nuxt-picture src="images/rhino.jpg" />
+    <nuxt-picture src="rhino.jpg" />
   </div>
 </template>

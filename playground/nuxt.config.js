@@ -31,6 +31,12 @@ export default {
     // Build Configuration: https://go.nuxtjs.dev/config-build
     build: {},
 
+    publicRuntimeConfig: {
+        interventionRequest: {
+          baseUrl: 'http://localhost:8080/assets'
+        }
+    },
+
     image: {
         provider: 'interventionRequest',
         providers: {
@@ -38,7 +44,7 @@ export default {
                 name: 'interventionRequest',
                 provider: '../dist/index.js',
                 options: {
-                    baseUrl: 'http://localhost:8080/assets'
+                    imagesPath: 'images'
                 }
             }
         }

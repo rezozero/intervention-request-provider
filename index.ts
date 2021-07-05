@@ -8,7 +8,7 @@ interface ImageContext {
 
 export function getImage(
     src: string,
-    { modifiers, baseUrl = '/' }: ImageOptions,
+    { modifiers, baseUrl = '/', imagesPath = '' }: ImageOptions,
     { nuxtContext }: ImageContext
 ): ResolvedImage {
     const {
@@ -54,7 +54,7 @@ export function getImage(
     if (format === 'webp') src += '.webp'
 
     return {
-        url: joinURL(baseUrl, operationsString, src),
+        url: joinURL(nuxtContext.$config.interventionRequest?.baseUrl || baseUrl, operationsString, imagesPath, src),
         isStatic: process.static && !nuxtContext.isDev && nuxtContext.route.query.preview !== '1',
     }
 }
