@@ -4,11 +4,11 @@
 ## Installation
 
 ```sh
-yarn add -D @rezo-zero/intervention-request-provider
+yarn add @rezo-zero/intervention-request-provider
 ```
 or
 ```sh
-npm install -D @rezo-zero/intervention-request-provider
+npm install @rezo-zero/intervention-request-provider
 ```
 
 
