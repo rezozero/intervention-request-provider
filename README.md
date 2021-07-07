@@ -14,14 +14,27 @@ npm install @rezo-zero/intervention-request-provider
 
 Add the provider to @nuxt/image module as described [here](https://image.nuxtjs.org/advanced/custom-provider).
 
+```js
+    // nuxt.config
+    image: {
+        provider: 'interventionRequest',
+        providers: {
+            interventionRequest: {
+                name: 'interventionRequest',
+                provider: '~/node_modules/@rezo-zero/intervention-request-provider/dist/index.js'
+            }
+        }
+    }
+```
+
 ## Setup
 
 ### baseUrl
 
 - As a runtime config variable (preferred)
 
-nuxt.config
 ```js
+    // nuxt.config
     publicRuntimeConfig: {
         interventionRequest: {
           baseUrl: 'http://localhost'
@@ -31,8 +44,8 @@ nuxt.config
 
 - As a @nuxt/image provider option
 
-nuxt.config
 ```js
+    // nuxt.config
     image: {
         providers: {
             interventionRequest: {
