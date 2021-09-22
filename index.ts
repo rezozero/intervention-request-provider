@@ -54,7 +54,9 @@ export function getImage(
     if (format === 'webp') src += '.webp'
 
     return {
-        url: joinURL(nuxtContext.$config.interventionRequest?.baseUrl || baseUrl, operationsString, imagesPath, src),
+        url: src.match('^https?')
+            ? src
+            : joinURL(nuxtContext.$config.interventionRequest?.baseUrl || baseUrl, operationsString, imagesPath, src),
         isStatic: process.static && !nuxtContext.isDev && nuxtContext.route.query.preview !== '1',
     }
 }
