@@ -8,7 +8,7 @@ interface ImageContext {
 
 export function getImage(
     src: string,
-    { modifiers, baseUrl = '/', imagesPath = '' }: ImageOptions,
+    { modifiers, baseUrl = '/', basePath = '', imagesPath = '' }: ImageOptions,
     { nuxtContext }: ImageContext
 ): ResolvedImage {
     const {
@@ -53,10 +53,19 @@ export function getImage(
 
     if (format === 'webp') src += '.webp'
 
+    const getUrl = function (): string {
+        if (src.match('^https?')) return src
+
+        const base = joinURL(nuxtContext.$config.interventionRequest?.baseUrl || baseUrl)
+        const isSvg = format === 'svg' || src.split('.').pop()?.slice(0, 3) === 'svg'
+
+        if (isSvg) return joinURL(base, src)
+
+        return joinURL(base, basePath, operationsString, imagesPath, src)
+    }
+
     return {
-        url: src.match('^https?')
-            ? src
-            : joinURL(nuxtContext.$config.interventionRequest?.baseUrl || baseUrl, operationsString, imagesPath, src),
+        url: getUrl(),
         isStatic: process.static && !nuxtContext.isDev && nuxtContext.route.query.preview !== '1',
     }
 }
