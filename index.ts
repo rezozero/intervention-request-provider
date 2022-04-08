@@ -8,7 +8,7 @@ interface ImageContext {
 
 export function getImage(
     src: string,
-    { modifiers, baseUrl = '/', basePath = '', imagesPath = '' }: ImageOptions,
+    { modifiers, baseUrl = '/', basePath = '', noProcessBasePath = '', imagesPath = '' }: ImageOptions,
     { nuxtContext }: ImageContext
 ): ResolvedImage {
     const {
@@ -23,6 +23,7 @@ export function getImage(
         flip,
         crop,
         blur,
+        noProcess,
         ...providerModifiers
     } = modifiers as Partial<ImageModifiers>
     const operations = [`q${providerModifiers.quality ?? 90}`]
@@ -56,12 +57,19 @@ export function getImage(
     const getUrl = function (): string {
         if (src.match('^https?')) return src
 
-        const base = joinURL(nuxtContext.$config.interventionRequest?.baseUrl || baseUrl)
+        const base = nuxtContext.$config.interventionRequest?.baseUrl || baseUrl
         const isSvg = format === 'svg' || src.split('.').pop()?.slice(0, 3) === 'svg'
 
-        if (isSvg) return joinURL(base, src)
+        if (isSvg || noProcess)
+            return joinURL(base, nuxtContext.$config.interventionRequest?.noProcessBasePath || noProcessBasePath, src)
 
-        return joinURL(base, basePath, operationsString, imagesPath, src)
+        return joinURL(
+            base,
+            nuxtContext.$config.interventionRequest?.basePath || basePath,
+            operationsString,
+            nuxtContext.$config.interventionRequest?.imagesPath || imagesPath,
+            src
+        )
     }
 
     return {
