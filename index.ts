@@ -52,7 +52,7 @@ export function getImage(
     // process modifiers
     const operationsString = operations.join('-')
 
-    if (format === 'webp') src += '.webp'
+    if (format === 'webp' && !src.endsWith('.webp')) src += '.webp'
 
     const getUrl = function (): string {
         if (src.match('^https?')) return src
