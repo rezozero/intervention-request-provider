@@ -23,6 +23,7 @@ export function getImage(
         flip,
         crop,
         blur,
+        align,
         noProcess,
         ...providerModifiers
     } = modifiers as Partial<ImageModifiers>
@@ -40,6 +41,8 @@ export function getImage(
     if (contrast > 0) operations.push(`k${contrast}`)
 
     if (sharpen > 0) operations.push(`s${sharpen}`)
+
+    if (align) operations.push(`a${align}`)
 
     if (blur > 0) operations.push(`l${blur}`)
 
