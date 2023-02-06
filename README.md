@@ -1,16 +1,16 @@
 # intervention-request-provider
-[InterventionRequest](https://github.com/ambroisemaupate/intervention-request) provider for [@nuxt/image](https://github.com/nuxt/image)
+[InterventionRequest](https://github.com/ambroisemaupate/intervention-request) provider for [@nuxt/image-edge](https://github.com/nuxt/image)
 
 This library is built for **Nuxt 3**.
 
 ## Installation
 
 ```sh
-yarn add @rezo-zero/intervention-request-provider
+yarn add @rezo-zero/intervention-request-provider@next
 ```
 or
 ```sh
-npm install @rezo-zero/intervention-request-provider
+npm install @rezo-zero/intervention-request-provider@next
 ```
 
 

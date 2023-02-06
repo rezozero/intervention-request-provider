@@ -1,6 +1,6 @@
 {
     "name": "@rezo-zero/intervention-request-provider",
-    "version": "1.0.0-next.1",
+    "version": "1.0.0-next.2",
     "description": "InterventionRequest provider for @nuxt/image",
     "main": "dist/index.js",
     "scripts": {
@@ -9,7 +9,7 @@
         "dev": "nuxt dev",
         "prepublishOnly": "yarn build",
         "clean": "rm -rf node_modules && rm -rf .nuxt && rm -rf .output && rm -rf dist",
-        "postinstall": "nuxt prepare && yarn build",
+        "prepare": "nuxt prepare && yarn build",
         "lint": "eslint --fix --ext \".js,.ts,.json\" ."
     },
     "engines": {
