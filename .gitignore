@@ -1,4 +1,9 @@
 node_modules/
+.nuxt
+.vscode
+.vercel
+.output
+.DS_Store
 dist/
 playground/.nuxt/
 playground/.output/
