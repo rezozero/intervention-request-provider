@@ -1,6 +1,6 @@
 import { joinURL } from 'ufo'
 import { ImageModifiers, ImageOptions, ResolvedImage } from '@nuxt/image-edge'
-import { useRuntimeConfig } from '#app'
+import { useRuntimeConfig } from '#imports'
 
 interface InterventionRequestImageModifiers extends ImageModifiers {
     contrast?: number

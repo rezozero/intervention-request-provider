@@ -13,11 +13,15 @@ or
 npm install @rezo-zero/intervention-request-provider@next
 ```
 
-
-Add the provider to @nuxt/image module as described [here](https://image.nuxtjs.org/advanced/custom-provider).
+- Register Nuxt module `@rezo-zero/intervention-request-provider`
+- Add the provider to `@nuxt/image-edge` module as described [here](https://image.nuxtjs.org/advanced/custom-provider).
 
 ```ts
     // nuxt.config.ts
+    modules: [
+        '@nuxt/image-edge',
+        '@rezo-zero/intervention-request-provider'
+    ],
     runtimeConfig: {
         public: {
             interventionRequest: {
@@ -32,7 +36,7 @@ Add the provider to @nuxt/image module as described [here](https://image.nuxtjs.
         providers: {
             interventionRequest: {
                 name: 'interventionRequest',
-                provider: '~/node_modules/@rezo-zero/intervention-request-provider/dist/index.js', 
+                provider: '~/node_modules/@rezo-zero/intervention-request-provider/dist/runtime/index',
                 options: {
                     imagesPath: 'images'
                 }
@@ -129,3 +133,9 @@ See [InterventionRequest operations](https://github.com/ambroisemaupate/interven
 2. Install dependencies using `yarn install`
 3. Start Docker server ([InterventionRequest](https://github.com/ambroisemaupate/intervention-request#ready-to-go-docker-image)) using `docker-compose up -d`
 4. Start development server using `yarn dev`
+
+## Publishing
+
+```shell
+yarn prepack && npm publish --tag next
+```
