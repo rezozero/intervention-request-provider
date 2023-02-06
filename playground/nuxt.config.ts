@@ -15,12 +15,6 @@ export default defineNuxtConfig({
         },
     },
 
-    dir: {
-        assets: 'playground/assets',
-        pages: 'playground/pages',
-        layouts: 'playground/layouts',
-    },
-
     // Global CSS: https://go.nuxtjs.dev/config-css
     css: [],
 
@@ -30,7 +24,12 @@ export default defineNuxtConfig({
     // Auto import components: https://go.nuxtjs.dev/config-components
     components: true,
 
-    modules: ['@nuxt/image-edge'],
+    modules: [
+        '@nuxt/image-edge',
+        '../src/module'
+    ],
+
+    interventionRequestProvider: {},
 
     // Build Configuration: https://go.nuxtjs.dev/config-build
     build: {},
@@ -41,7 +40,7 @@ export default defineNuxtConfig({
                 baseUrl: process.env.NUXT_PUBLIC_INTERVENTION_REQUEST_BASE_URL ?? 'http://localhost:8080/assets',
                 noProcessBaseUrl:
                     process.env.NUXT_PUBLIC_INTERVENTION_REQUEST_NO_PROCESS_BASE_URL ?? 'http://localhost:8080/images',
-                imagesPath: 'images',
+                imagesPath: process.env.NUXT_PUBLIC_INTERVENTION_REQUEST_IMAGES_PATH ?? 'images',
             },
         },
     },
@@ -51,7 +50,7 @@ export default defineNuxtConfig({
         providers: {
             interventionRequest: {
                 name: 'interventionRequest',
-                provider: './index.ts',
+                provider: './src/runtime/index.ts',
                 options: {
                     imagesPath: 'images',
                 },

@@ -5,3 +5,4 @@
     <nuxt-picture src="opera.webp" :modifiers="{ noProcess: true }" />
   </div>
 </template>
+<script setup></script>

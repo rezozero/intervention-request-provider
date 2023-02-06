@@ -1,15 +1,24 @@
 {
     "name": "@rezo-zero/intervention-request-provider",
     "version": "1.0.0-next.2",
-    "description": "InterventionRequest provider for @nuxt/image",
-    "main": "dist/index.js",
+    "description": "InterventionRequest provider for @nuxt/image-edge",
+    "license": "MIT",
+    "author": "Rezo Zero",
+    "main": "./dist/module.cjs",
+    "types": "./dist/types.d.ts",
+    "exports": {
+        ".": {
+            "import": "./dist/module.mjs",
+            "require": "./dist/module.cjs"
+        }
+    },
     "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1",
-        "build": "babel ./index.ts --out-file dist/index.js --extensions \".ts\"",
-        "dev": "nuxt dev",
+        "prepack": "nuxt-module-build",
+        "dev": "nuxt dev playground",
+        "build": "nuxt build playground",
+        "prepare": "nuxt-module-build --stub && nuxt prepare playground",
         "prepublishOnly": "yarn build",
-        "clean": "rm -rf node_modules && rm -rf .nuxt && rm -rf .output && rm -rf dist",
-        "prepare": "nuxt prepare && yarn build",
+        "clean": "rm -rf node_modules && rm -rf playground/node_modules && rm -rf playground/.nuxt && rm -rf .output && rm -rf dist",
         "lint": "eslint --fix --ext \".js,.ts,.json\" ."
     },
     "engines": {
@@ -29,14 +38,13 @@
         "@nuxt/image",
         "provider"
     ],
-    "author": "",
-    "license": "MIT",
     "bugs": {
         "url": "https://github.com/rezozero/intervention-request-provider/issues"
     },
     "homepage": "https://github.com/rezozero/intervention-request-provider#readme",
     "dependencies": {
-        "ufo": "^0.7.5"
+        "ufo": "^0.7.5",
+        "@nuxt/kit": "^3.0.0"
     },
     "devDependencies": {
         "@babel/cli": "^7.14.5",
@@ -44,6 +52,7 @@
         "@babel/preset-env": "^7.14.5",
         "@babel/preset-typescript": "^7.14.5",
         "@nuxt/image-edge": "^1.0.0-27827328.bc9ddc0",
+        "@nuxt/module-builder": "^0.2.1",
         "@nuxtjs/eslint-config-typescript": "^12.0.0",
         "@types/node": "^18.11.19",
         "@typescript-eslint/eslint-plugin": "^5.45.0",
