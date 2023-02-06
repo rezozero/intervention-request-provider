@@ -1,6 +1,6 @@
 {
     "name": "@rezo-zero/intervention-request-provider",
-    "version": "1.0.0-next.2",
+    "version": "1.0.0-next.3",
     "description": "InterventionRequest provider for @nuxt/image-edge",
     "license": "MIT",
     "author": "Rezo Zero",
@@ -43,8 +43,8 @@
     },
     "homepage": "https://github.com/rezozero/intervention-request-provider#readme",
     "dependencies": {
-        "ufo": "^0.7.5",
-        "@nuxt/kit": "^3.0.0"
+        "@nuxt/kit": "^3.0.0",
+        "ufo": "^0.7.5"
     },
     "devDependencies": {
         "@babel/cli": "^7.14.5",
@@ -53,6 +53,7 @@
         "@babel/preset-typescript": "^7.14.5",
         "@nuxt/image-edge": "^1.0.0-27827328.bc9ddc0",
         "@nuxt/module-builder": "^0.2.1",
+        "@nuxt/types": "^2.16.0",
         "@nuxtjs/eslint-config-typescript": "^12.0.0",
         "@types/node": "^18.11.19",
         "@typescript-eslint/eslint-plugin": "^5.45.0",
