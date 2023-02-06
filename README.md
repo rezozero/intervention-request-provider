@@ -1,6 +1,8 @@
 # intervention-request-provider
 [InterventionRequest](https://github.com/ambroisemaupate/intervention-request) provider for [@nuxt/image](https://github.com/nuxt/image)
 
+This library is built for **Nuxt 3**.
+
 ## Installation
 
 ```sh
@@ -14,14 +16,26 @@ npm install @rezo-zero/intervention-request-provider
 
 Add the provider to @nuxt/image module as described [here](https://image.nuxtjs.org/advanced/custom-provider).
 
-```js
-    // nuxt.config
+```ts
+    // nuxt.config.ts
+    runtimeConfig: {
+        public: {
+            interventionRequest: {
+                baseUrl: process.env.NUXT_PUBLIC_INTERVENTION_REQUEST_BASE_URL ?? 'http://localhost:8080/assets',
+                noProcessBaseUrl: process.env.NUXT_PUBLIC_INTERVENTION_REQUEST_NO_PROCESS_BASE_URL ?? 'http://localhost:8080/images',
+                imagesPath: 'images'
+            }
+        }
+    }
     image: {
         provider: 'interventionRequest',
         providers: {
             interventionRequest: {
                 name: 'interventionRequest',
-                provider: '~/node_modules/@rezo-zero/intervention-request-provider/dist/index.js'
+                provider: '~/node_modules/@rezo-zero/intervention-request-provider/dist/index.js', 
+                options: {
+                    imagesPath: 'images'
+                }
             }
         }
     }
@@ -34,10 +48,12 @@ Add the provider to @nuxt/image module as described [here](https://image.nuxtjs.
 - As a runtime config variable (preferred)
 
 ```js
-    // nuxt.config
-    publicRuntimeConfig: {
-        interventionRequest: {
-          baseUrl: 'http://localhost'
+    // nuxt.config.ts
+    runtimeConfig: {
+        public: {
+            interventionRequest: {
+                baseUrl: process.env.NUXT_PUBLIC_INTERVENTION_REQUEST_BASE_URL ?? 'http://localhost'
+            }
         }
     }
 ```
@@ -45,7 +61,7 @@ Add the provider to @nuxt/image module as described [here](https://image.nuxtjs.
 - As a @nuxt/image provider option
 
 ```js
-    // nuxt.config
+    // nuxt.config.ts
     image: {
         providers: {
             interventionRequest: {
@@ -57,10 +73,40 @@ Add the provider to @nuxt/image module as described [here](https://image.nuxtjs.
     }
 ```
 
+### noProcessBaseUrl
+
+- As a runtime config variable (preferred)
+
+```js
+    // nuxt.config.ts
+    runtimeConfig: {
+        public: {
+            interventionRequest: {
+                noProcessBaseUrl: process.env.NUXT_PUBLIC_INTERVENTION_REQUEST_NO_PROCESS_BASE_URL ?? 'http://localhost/images'
+            }
+        }
+    }
+```
+
+- As a @nuxt/image provider option
+
+```js
+    // nuxt.config.ts
+    image: {
+        providers: {
+            interventionRequest: {
+                options: {
+                    noProcessBaseUrl: 'http://localhost/images'
+                }
+            }
+        }
+    }
+```
+
 ### imagesPath (see [InterventionRequest configuration](https://github.com/ambroisemaupate/intervention-request#configuration))
 
-nuxt.config
 ```js
+    // nuxt.config.ts
     image: {
         providers: {
             interventionRequest: {
@@ -82,4 +128,4 @@ See [InterventionRequest operations](https://github.com/ambroisemaupate/interven
 1. Clone this repository
 2. Install dependencies using `yarn install`
 3. Start Docker server ([InterventionRequest](https://github.com/ambroisemaupate/intervention-request#ready-to-go-docker-image)) using `docker-compose up -d`
-3. Start development server using `yarn dev`
+4. Start development server using `yarn dev`

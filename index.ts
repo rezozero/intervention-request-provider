@@ -1,16 +1,25 @@
 import { joinURL } from 'ufo'
-import { ImageModifiers, ImageOptions, ResolvedImage } from '@nuxt/image'
-import { Context } from '@nuxt/types'
+import { ImageModifiers, ImageOptions, ResolvedImage } from '@nuxt/image-edge'
+import { useRuntimeConfig } from '#app'
 
-interface ImageContext {
-    nuxtContext: Context
+interface InterventionRequestImageModifiers extends ImageModifiers {
+    contrast?: number
+    sharpen?: number
+    interlace?: boolean
+    grayscale?: boolean
+    flip?: 'h' | 'v'
+    crop?: string
+    blur?: number
+    align?: 'tl' | 't' | 'tr' | 'l' | 'c' | 'r' | 'bl' | 'b' | 'br'
+    noProcess?: boolean
 }
 
 export function getImage(
     src: string,
-    { modifiers, baseUrl = '/', basePath = '', noProcessBasePath = '', imagesPath = '' }: ImageOptions,
-    { nuxtContext }: ImageContext
+    { modifiers, baseUrl = '/', noProcessBaseUrl = '', imagesPath = '' }: ImageOptions
 ): ResolvedImage {
+    const config = useRuntimeConfig()
+
     const {
         width,
         height,
@@ -26,57 +35,73 @@ export function getImage(
         align,
         noProcess,
         ...providerModifiers
-    } = modifiers as Partial<ImageModifiers>
+    } = modifiers as Partial<InterventionRequestImageModifiers>
     const operations = [`q${providerModifiers.quality ?? 90}`]
 
     if (fit) {
         operations.push(`f${fit}`)
     } else {
-        if (width && width > 1) operations.push(`w${width}`)
-        if (height && height > 1) operations.push(`h${height}`)
+        if (width && width > 1) {
+            operations.push(`w${width}`)
+        }
+        if (height && height > 1) {
+            operations.push(`h${height}`)
+        }
     }
 
-    if (crop) operations.push(`c${crop}`)
-
-    if (contrast > 0) operations.push(`k${contrast}`)
-
-    if (sharpen > 0) operations.push(`s${sharpen}`)
-
-    if (align) operations.push(`a${align}`)
-
-    if (blur > 0) operations.push(`l${blur}`)
-
-    if (interlace === true) operations.push('i')
-
-    if (grayscale === true) operations.push('g')
-
-    if (flip === 'h' || flip === 'v') operations.push(`m${flip}`)
+    if (crop) {
+        operations.push(`c${crop}`)
+    }
+    if (contrast && contrast > 0) {
+        operations.push(`k${contrast}`)
+    }
+    if (sharpen && sharpen > 0) {
+        operations.push(`s${sharpen}`)
+    }
+    if (align) {
+        operations.push(`a${align}`)
+    }
+    if (blur && blur > 0) {
+        operations.push(`l${blur}`)
+    }
+    if (interlace === true) {
+        operations.push('i')
+    }
+    if (grayscale === true) {
+        operations.push('g')
+    }
+    if (flip === 'h' || flip === 'v') {
+        operations.push(`m${flip}`)
+    }
 
     // process modifiers
     const operationsString = operations.join('-')
 
-    if (format === 'webp' && !src.endsWith('.webp')) src += '.webp'
+    if (format === 'webp' && !src.endsWith('.webp')) {
+        src += '.webp'
+    }
 
     const getUrl = function (): string {
-        if (src.match('^https?')) return src
+        if (src.match('^https?')) {
+            return src
+        }
 
-        const base = nuxtContext.$config.interventionRequest?.baseUrl || baseUrl
         const isSvg = format === 'svg' || src.split('.').pop()?.slice(0, 3) === 'svg'
 
-        if (isSvg || noProcess)
-            return joinURL(base, nuxtContext.$config.interventionRequest?.noProcessBasePath || noProcessBasePath, src)
+        if (isSvg || noProcess) {
+            return joinURL(config.public.interventionRequest?.noProcessBaseUrl || noProcessBaseUrl, src)
+        }
 
         return joinURL(
-            base,
-            nuxtContext.$config.interventionRequest?.basePath || basePath,
+            config.public.interventionRequest?.baseUrl || baseUrl,
             operationsString,
-            nuxtContext.$config.interventionRequest?.imagesPath || imagesPath,
+            config.public.interventionRequest?.imagesPath || imagesPath,
             src
         )
     }
 
     return {
         url: getUrl(),
-        isStatic: process.static && !nuxtContext.isDev && nuxtContext.route.query.preview !== '1',
+        format,
     }
 }
