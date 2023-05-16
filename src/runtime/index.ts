@@ -7,6 +7,7 @@ interface InterventionRequestImageModifiers extends ImageModifiers {
     sharpen?: number
     interlace?: boolean
     grayscale?: boolean
+    greyscale?: boolean
     flip?: 'h' | 'v'
     crop?: string
     blur?: number
@@ -29,6 +30,7 @@ export function getImage(
         sharpen,
         interlace,
         grayscale,
+        greyscale,
         flip,
         crop,
         blur,
@@ -38,7 +40,7 @@ export function getImage(
     } = modifiers as Partial<InterventionRequestImageModifiers>
     const operations = [`q${providerModifiers.quality ?? 90}`]
 
-    if (fit) {
+    if (fit && /^[0-9]+[:x][0-9]+$/.test(fit)) {
         operations.push(`f${fit}`)
     } else {
         if (width && width > 1) {
@@ -67,7 +69,7 @@ export function getImage(
     if (interlace === true) {
         operations.push('i')
     }
-    if (grayscale === true) {
+    if (grayscale === true || greyscale === true) {
         operations.push('g')
     }
     if (flip === 'h' || flip === 'v') {

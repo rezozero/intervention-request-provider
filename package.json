@@ -11,7 +11,7 @@
         "prepack": "nuxt-module-build",
         "dev": "nuxt dev playground",
         "dev:prepare": "nuxt-module-build --stub && nuxt prepare playground",
-        "clean": "rm -rf node_modules && rm -rf playground/node_modules && rm -rf playground/.nuxt && rm -rf .output && rm -rf dist",
+        "clean": "rm -rf node_modules && rm -rf playground/node_modules && rm -rf playground/.nuxt  && rm -rf playground/.output && rm -rf .output && rm -rf dist",
         "lint": "eslint --fix --ext \".js,.ts,.json\" .",
         "release": "yarn prepack && npm publish --tag next",
         "dev:pack": " yarn prepack && npm pack --dry-run"
@@ -47,7 +47,7 @@
         "@babel/core": "^7.20.12",
         "@babel/preset-env": "^7.14.5",
         "@babel/preset-typescript": "^7.14.5",
-        "@nuxt/image-edge": "^1.0.0-27827328.bc9ddc0",
+        "@nuxt/image-edge": "^1.0.0-28059208.2abef1b",
         "@nuxt/module-builder": "^0.2.1",
         "@nuxt/types": "^2.16.0",
         "@nuxtjs/eslint-config-typescript": "^12.0.0",
