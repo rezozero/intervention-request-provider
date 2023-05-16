@@ -20,6 +20,7 @@ export function getImage(
         sharpen,
         interlace,
         grayscale,
+        greyscale,
         flip,
         crop,
         blur,
@@ -29,7 +30,7 @@ export function getImage(
     } = modifiers as Partial<ImageModifiers>
     const operations = [`q${providerModifiers.quality ?? 90}`]
 
-    if (fit) {
+    if (fit && /^[0-9]+[:x][0-9]+$/.test(fit)) {
         operations.push(`f${fit}`)
     } else {
         if (width && width > 1) operations.push(`w${width}`)
@@ -37,19 +38,12 @@ export function getImage(
     }
 
     if (crop) operations.push(`c${crop}`)
-
     if (contrast > 0) operations.push(`k${contrast}`)
-
     if (sharpen > 0) operations.push(`s${sharpen}`)
-
     if (align) operations.push(`a${align}`)
-
     if (blur > 0) operations.push(`l${blur}`)
-
     if (interlace === true) operations.push('i')
-
-    if (grayscale === true) operations.push('g')
-
+    if (grayscale === true || greyscale === true) operations.push('g')
     if (flip === 'h' || flip === 'v') operations.push(`m${flip}`)
 
     // process modifiers
