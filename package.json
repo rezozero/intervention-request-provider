@@ -1,13 +1,14 @@
 {
     "name": "@rezo-zero/intervention-request-provider",
-    "version": "0.3.3",
+    "version": "0.3.4",
     "description": "InterventionRequest provider for @nuxt/image",
     "main": "dist/index.js",
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
         "build": "babel index.ts --out-file dist/index.js --extensions \".ts\"",
         "dev": "yarn build --watch & yarn nuxt playground",
-        "prepublishOnly": "yarn build",
+        "clean": "rm -rf .dist && rm -rf node_modules",
+        "prepublishOnly": "yarn && yarn clean && yarn build",
         "lint": "eslint --fix --ext \".js,.ts,.json\" ."
     },
     "files": [
