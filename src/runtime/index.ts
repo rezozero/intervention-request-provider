@@ -1,8 +1,8 @@
 import { joinURL } from 'ufo'
-import { ImageModifiers, ImageOptions, ResolvedImage } from '@nuxt/image-edge'
+import type { ImageModifiers, ImageOptions, ResolvedImage } from '@nuxt/image'
 import { useRuntimeConfig } from '#imports'
 
-interface InterventionRequestImageModifiers extends ImageModifiers {
+export interface InterventionRequestImageModifiers extends ImageModifiers {
     contrast?: number
     sharpen?: number
     interlace?: boolean
@@ -17,7 +17,7 @@ interface InterventionRequestImageModifiers extends ImageModifiers {
 
 export function getImage(
     src: string,
-    { modifiers, baseUrl = '/', noProcessBaseUrl = '', imagesPath = '' }: ImageOptions
+    { modifiers, baseUrl = '/', noProcessBaseUrl = '', imagesPath = '' }: ImageOptions,
 ): ResolvedImage {
     const config = useRuntimeConfig()
 
@@ -98,7 +98,7 @@ export function getImage(
             config.public.interventionRequest?.baseUrl || baseUrl,
             operationsString,
             config.public.interventionRequest?.imagesPath || imagesPath,
-            src
+            src,
         )
     }
 

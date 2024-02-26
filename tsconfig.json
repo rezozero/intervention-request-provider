@@ -1,13 +1,3 @@
 {
-    // https://v3.nuxtjs.org/concepts/typescript
-    "extends": "./playground/.nuxt/tsconfig.json",
-    "compilerOptions": {
-        "strict": true,
-        "baseUrl": ".",
-        "moduleResolution": "Node",
-        "esModuleInterop": true,
-        "resolveJsonModule": true,
-        "types": ["node", "@nuxt/types", "@nuxt/image-edge"]
-    },
-    "exclude": ["dist"]
+    "extends": "./.nuxt/tsconfig.json"
 }
