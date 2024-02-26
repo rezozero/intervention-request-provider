@@ -1,48 +1,22 @@
 # intervention-request-provider
-[InterventionRequest](https://github.com/ambroisemaupate/intervention-request) provider for [@nuxt/image-edge](https://github.com/nuxt/image)
+[InterventionRequest](https://github.com/ambroisemaupate/intervention-request) provider for [@nuxt/image](https://github.com/nuxt/image)
 
-This library is built for **Nuxt 3**.
+This is a **Nuxt 3** module.
 
 ## Installation
 
 ```sh
-yarn add @rezo-zero/intervention-request-provider@next
-```
-or
-```sh
-npm install @rezo-zero/intervention-request-provider@next
+npm install --save-dev @rezo-zero/intervention-request-provider @nuxt/image
 ```
 
-- Register Nuxt module `@rezo-zero/intervention-request-provider`
-- Add the provider to `@nuxt/image-edge` module as described [here](https://image.nuxtjs.org/advanced/custom-provider).
+- Register Nuxt module `@rezo-zero/intervention-request-provider` and `@nuxt/image`:
 
 ```ts
-    // nuxt.config.ts
-    modules: [
-        '@nuxt/image-edge',
-        '@rezo-zero/intervention-request-provider'
-    ],
-    runtimeConfig: {
-        public: {
-            interventionRequest: {
-                baseUrl: process.env.NUXT_PUBLIC_INTERVENTION_REQUEST_BASE_URL ?? 'http://localhost:8080/assets',
-                noProcessBaseUrl: process.env.NUXT_PUBLIC_INTERVENTION_REQUEST_NO_PROCESS_BASE_URL ?? 'http://localhost:8080/images',
-                imagesPath: 'images'
-            }
-        }
-    }
-    image: {
-        provider: 'interventionRequest',
-        providers: {
-            interventionRequest: {
-                name: 'interventionRequest',
-                provider: '~/node_modules/@rezo-zero/intervention-request-provider/dist/runtime/index',
-                options: {
-                    imagesPath: 'images'
-                }
-            }
-        }
-    }
+// nuxt.config.ts
+modules: [
+    '@rezo-zero/intervention-request-provider',
+    '@nuxt/image'
+]
 ```
 
 ## Setup
@@ -50,19 +24,12 @@ npm install @rezo-zero/intervention-request-provider@next
 ### baseUrl
 
 - As a runtime config variable (preferred)
-
-```js
-    // nuxt.config.ts
-    runtimeConfig: {
-        public: {
-            interventionRequest: {
-                baseUrl: process.env.NUXT_PUBLIC_INTERVENTION_REQUEST_BASE_URL ?? 'http://localhost'
-            }
-        }
-    }
+```dotenv
+#.env
+NUXT_PUBLIC_INTERVENTION_REQUEST_BASE_URL=https://example.com/assets
 ```
 
-- As a @nuxt/image provider option
+- As a `@nuxt/image` provider option
 
 ```js
     // nuxt.config.ts
@@ -80,19 +47,12 @@ npm install @rezo-zero/intervention-request-provider@next
 ### noProcessBaseUrl
 
 - As a runtime config variable (preferred)
-
-```js
-    // nuxt.config.ts
-    runtimeConfig: {
-        public: {
-            interventionRequest: {
-                noProcessBaseUrl: process.env.NUXT_PUBLIC_INTERVENTION_REQUEST_NO_PROCESS_BASE_URL ?? 'http://localhost/images'
-            }
-        }
-    }
+```dotenv
+#.env
+NUXT_PUBLIC_INTERVENTION_REQUEST_NO_PROCESS_BASE_URL=https://example.com/assets
 ```
 
-- As a @nuxt/image provider option
+- As a `@nuxt/image` provider option
 
 ```js
     // nuxt.config.ts
@@ -100,7 +60,7 @@ npm install @rezo-zero/intervention-request-provider@next
         providers: {
             interventionRequest: {
                 options: {
-                    noProcessBaseUrl: 'http://localhost/images'
+                    noProcessBaseUrl: 'https://example.com/images'
                 }
             }
         }
@@ -108,6 +68,12 @@ npm install @rezo-zero/intervention-request-provider@next
 ```
 
 ### imagesPath (see [InterventionRequest configuration](https://github.com/ambroisemaupate/intervention-request#configuration))
+
+- As a runtime config variable (preferred)
+```dotenv
+#.env
+NUXT_PUBLIC_INTERVENTION_REQUEST_IMAGES_PATH=images
+```
 
 ```js
     // nuxt.config.ts
@@ -130,12 +96,12 @@ See [InterventionRequest operations](https://github.com/ambroisemaupate/interven
 ## Contributing
 
 1. Clone this repository
-2. Install dependencies using `yarn install`
+2. Install dependencies using `npm install`
 3. Start Docker server ([InterventionRequest](https://github.com/ambroisemaupate/intervention-request#ready-to-go-docker-image)) using `docker-compose up -d`
-4. Start development server using `yarn dev`
+4. Start development server using `npm run dev`
 
 ## Publishing
 
 ```shell
-yarn prepack && npm publish --tag next
+npm run release
 ```
