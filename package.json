@@ -49,6 +49,7 @@
   "homepage": "https://github.com/rezozero/intervention-request-provider#readme",
   "dependencies": {
     "@nuxt/kit": "^3.10.3",
+    "defu": "^6.1.4",
     "ufo": "^0.7.5"
   },
   "devDependencies": {
@@ -58,7 +59,6 @@
     "@nuxt/schema": "^3.10.3",
     "@types/node": "^20.11.20",
     "changelogen": "^0.5.5",
-    "defu": "^6.1.4",
     "eslint": "^8.57.0",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-prettier": "^5.1.3",
