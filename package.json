@@ -22,7 +22,7 @@
     "dev:prepare": "nuxt-module-build build --stub && nuxt-module-build prepare && nuxi prepare playground",
     "dev:pack": "npm run prepack && npm pack --dry-run",
     "lint": "eslint .",
-    "release": "npm run lint && npm run prepack && npm publish --follow-tags",
+    "release": "npm run lint && npm run prepack && changelogen --release && npm publish && git push --follow-tags",
     "clean": "rm -rf node_modules && rm -rf .nuxt && rm -rf dist && rm -rf playground/node_modules && rm -rf playground/.nuxt  && rm -rf playground/.output"
   },
   "engines": {
