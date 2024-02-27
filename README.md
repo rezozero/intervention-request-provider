@@ -1,7 +1,7 @@
 # intervention-request-provider
 [InterventionRequest](https://github.com/ambroisemaupate/intervention-request) provider for [@nuxt/image](https://github.com/nuxt/image)
 
-> **Warning**
+> [!WARNING]  
 > This branch is an archive.  
 > Use the `main` branch for the latest version.
 
