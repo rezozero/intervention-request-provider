@@ -1,69 +1,69 @@
 {
-    "name": "@rezo-zero/intervention-request-provider",
-    "version": "1.0.0",
-    "description": "InterventionRequest provider for @nuxt/image",
-    "license": "MIT",
-    "sideEffects": false,
-    "type": "module",
-    "author": "Rezo Zero",
-    "main": "./dist/module.cjs",
-    "types": "./dist/types.d.ts",
-    "exports": {
-        ".": {
-            "types": "./dist/types.d.ts",
-            "import": "./dist/module.mjs",
-            "require": "./dist/module.cjs"
-        }
-    },
-    "scripts": {
-        "prepack": "nuxt-module-build build",
-        "dev": "nuxi dev playground",
-        "dev:build": "nuxi build playground",
-        "dev:prepare": "nuxt-module-build build --stub && nuxt-module-build prepare && nuxi prepare playground",
-        "dev:pack": "npm run prepack && npm pack --dry-run",
-        "lint": "eslint .",
-        "release": "npm run lint && npm run prepack && npm publish --follow-tags",
-        "clean": "rm -rf node_modules && rm -rf .nuxt && rm -rf dist && rm -rf playground/node_modules && rm -rf playground/.nuxt  && rm -rf playground/.output"
-    },
-    "engines": {
-        "node": "^20"
-    },
-    "files": [
-        "dist"
-    ],
-    "repository": {
-        "type": "git",
-        "url": "git+https://github.com/rezozero/intervention-request-provider.git"
-    },
-    "keywords": [
-        "nuxt",
-        "nuxtjs",
-        "image",
-        "@nuxt/image",
-        "provider",
-        "intervention request"
-    ],
-    "bugs": {
-        "url": "https://github.com/rezozero/intervention-request-provider/issues"
-    },
-    "homepage": "https://github.com/rezozero/intervention-request-provider#readme",
-    "dependencies": {
-        "@nuxt/kit": "^3.10.3",
-        "ufo": "^0.7.5"
-    },
-    "devDependencies": {
-        "@nuxt/eslint-config": "^0.2.0",
-        "@nuxt/image": "^1.3.0",
-        "@nuxt/module-builder": "^0.5.5",
-        "@nuxt/schema": "^3.10.3",
-        "@types/node": "^20.11.20",
-        "changelogen": "^0.5.5",
-        "defu": "^6.1.4",
-        "eslint": "^8.57.0",
-        "eslint-config-prettier": "^9.1.0",
-        "eslint-plugin-prettier": "^5.1.3",
-        "nuxt": "^3.10.3",
-        "prettier": "^3.2.5",
-        "typescript": "^5.3.3"
+  "name": "@rezo-zero/intervention-request-provider",
+  "version": "1.0.0",
+  "description": "InterventionRequest provider for @nuxt/image",
+  "license": "MIT",
+  "sideEffects": false,
+  "type": "module",
+  "author": "Rezo Zero",
+  "main": "./dist/module.cjs",
+  "types": "./dist/types.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/types.d.ts",
+      "import": "./dist/module.mjs",
+      "require": "./dist/module.cjs"
     }
+  },
+  "scripts": {
+    "prepack": "nuxt-module-build build",
+    "dev": "nuxi dev playground",
+    "dev:build": "nuxi build playground",
+    "dev:prepare": "nuxt-module-build build --stub && nuxt-module-build prepare && nuxi prepare playground",
+    "dev:pack": "npm run prepack && npm pack --dry-run",
+    "lint": "eslint .",
+    "release": "npm run lint && npm run prepack && npm publish --follow-tags",
+    "clean": "rm -rf node_modules && rm -rf .nuxt && rm -rf dist && rm -rf playground/node_modules && rm -rf playground/.nuxt  && rm -rf playground/.output"
+  },
+  "engines": {
+    "node": "^20"
+  },
+  "files": [
+    "dist"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rezozero/intervention-request-provider.git"
+  },
+  "keywords": [
+    "nuxt",
+    "nuxtjs",
+    "image",
+    "@nuxt/image",
+    "provider",
+    "intervention request"
+  ],
+  "bugs": {
+    "url": "https://github.com/rezozero/intervention-request-provider/issues"
+  },
+  "homepage": "https://github.com/rezozero/intervention-request-provider#readme",
+  "dependencies": {
+    "@nuxt/kit": "^3.10.3",
+    "ufo": "^0.7.5"
+  },
+  "devDependencies": {
+    "@nuxt/eslint-config": "^0.2.0",
+    "@nuxt/image": "^1.3.0",
+    "@nuxt/module-builder": "^0.5.5",
+    "@nuxt/schema": "^3.10.3",
+    "@types/node": "^20.11.20",
+    "changelogen": "^0.5.5",
+    "defu": "^6.1.4",
+    "eslint": "^8.57.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-prettier": "^5.1.3",
+    "nuxt": "^3.10.3",
+    "prettier": "^3.2.5",
+    "typescript": "^5.3.3"
+  }
 }
