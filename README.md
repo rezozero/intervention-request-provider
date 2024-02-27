@@ -19,6 +19,10 @@ modules: [
 ]
 ```
 
+> [!NOTE]  
+> `@rezo-zero/intervention-request-provider` extends the Nuxt Image configuration.   
+> Therefore it must be registered before `@nuxt/image`.
+
 ## Setup
 
 ### baseUrl
