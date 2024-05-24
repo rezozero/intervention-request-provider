@@ -1,3 +1,23 @@
+## v1.1.0
+
+[compare changes](https://github.com/rezozero/intervention-request-provider/compare/v1.0.0...v1.1.0)
+
+### 🚀 Enhancements
+
+- Handle image formats other than webp ([1096364](https://github.com/rezozero/intervention-request-provider/commit/1096364))
+
+### 🩹 Fixes
+
+- Move defu from dependencies to devDepencies ([d8f7c23](https://github.com/rezozero/intervention-request-provider/commit/d8f7c23))
+
+### 📦 Build
+
+- Add release script ([5828145](https://github.com/rezozero/intervention-request-provider/commit/5828145))
+
+### ❤️ Contributors
+
+- Manuel Odelain <manuel@rezo-zero.com>
+
 ## v1.0.0
 
 [compare changes](https://github.com/rezozero/intervention-request-provider/compare/1.0.0-next.7...v1.0.0)
