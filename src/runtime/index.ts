@@ -79,8 +79,8 @@ export function getImage(
     // process modifiers
     const operationsString = operations.join('-')
 
-    if (format === 'webp' && !src.endsWith('.webp')) {
-        src += '.webp'
+    if (format && !src.endsWith('.' + format)) {
+        src += '.' + format
     }
 
     const getUrl = function (): string {

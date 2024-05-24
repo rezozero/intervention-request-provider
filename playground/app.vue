@@ -57,6 +57,11 @@
             <figcaption>No process image:</figcaption>
             <NuxtPicture :modifiers="{ noProcess: true }" src="opera.webp" />
         </figure>
+
+        <figure>
+            <figcaption>Avif format:</figcaption>
+            <NuxtPicture format="avif" src="rhino.jpg" />
+        </figure>
     </div>
 </template>
 
