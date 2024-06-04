@@ -62,6 +62,11 @@
             <figcaption>Avif format:</figcaption>
             <NuxtPicture format="avif" src="rhino.jpg" />
         </figure>
+
+        <figure>
+            <figcaption>Jpeg format prop with jpg image:</figcaption>
+            <NuxtPicture format="jpeg" src="rhino.jpg" />
+        </figure>
     </div>
 </template>
 

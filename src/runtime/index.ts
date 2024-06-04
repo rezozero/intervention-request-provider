@@ -2,6 +2,21 @@ import { joinURL } from 'ufo'
 import type { ImageModifiers, ImageOptions, ResolvedImage } from '@nuxt/image'
 import { useRuntimeConfig } from '#imports'
 
+const JPEG_REGEX = /jpe?g/
+
+function addFormatToSrc(src: string, format: string): string {
+    const extension = src.split('.').pop()
+
+    if (
+        extension === format ||
+        (extension?.match(JPEG_REGEX) && format.match(JPEG_REGEX)) // Avoid add `.jpg` to `.jpeg`, and vice versa
+    ) {
+        return src
+    }
+
+    return src + '.' + format
+}
+
 export interface InterventionRequestImageModifiers extends ImageModifiers {
     contrast?: number
     sharpen?: number
@@ -79,9 +94,7 @@ export function getImage(
     // process modifiers
     const operationsString = operations.join('-')
 
-    if (format && !src.endsWith('.' + format)) {
-        src += '.' + format
-    }
+    if (format) src = addFormatToSrc(src, format)
 
     const getUrl = function (): string {
         if (src.match('^https?')) {
