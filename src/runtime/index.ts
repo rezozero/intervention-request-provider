@@ -28,6 +28,7 @@ export interface InterventionRequestImageModifiers extends ImageModifiers {
     blur?: number
     align?: 'tl' | 't' | 'tr' | 'l' | 'c' | 'r' | 'bl' | 'b' | 'br'
     noProcess?: boolean
+    hotspot?: string
 }
 
 export function getImage(
@@ -51,6 +52,7 @@ export function getImage(
         blur,
         align,
         noProcess,
+        hotspot,
         ...providerModifiers
     } = modifiers as Partial<InterventionRequestImageModifiers>
     const operations = [`q${providerModifiers.quality ?? 90}`]
@@ -89,6 +91,9 @@ export function getImage(
     }
     if (flip === 'h' || flip === 'v') {
         operations.push(`m${flip}`)
+    }
+    if (hotspot) {
+        operations.push(`d${hotspot}`)
     }
 
     // process modifiers
