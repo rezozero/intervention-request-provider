@@ -1,3 +1,15 @@
+## v1.2.0
+
+[compare changes](https://github.com/rezozero/intervention-request-provider/compare/v1.1.1...v1.2.0)
+
+### 🚀 Enhancements
+
+- Add hotspot modifier - closes #3 ([#4](https://github.com/rezozero/intervention-request-provider/pull/4), [#3](https://github.com/rezozero/intervention-request-provider/issues/3))
+
+### ❤️ Contributors
+
+- Manuel Odelain ([@manuelodelain](http://github.com/manuelodelain))
+
 ## v1.1.1
 
 [compare changes](https://github.com/rezozero/intervention-request-provider/compare/v1.1.0...v1.1.1)
