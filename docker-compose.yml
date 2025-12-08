@@ -3,7 +3,7 @@ services:
   intervention:
     image: ambroisemaupate/intervention-request:latest
     volumes:
-      - ./playground/assets/images:/app/public/images:ro
+      - ./playground/public/images:/app/public/images:ro
       - assets:/app/public/assets
     ports:
       - 8080:80/tcp

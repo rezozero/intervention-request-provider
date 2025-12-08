@@ -55,7 +55,7 @@
 
         <figure>
             <figcaption>No process image:</figcaption>
-            <NuxtPicture :modifiers="{ noProcess: true }" src="opera.webp" />
+            <NuxtPicture :modifiers="{ noProcess: true }" src="/images/opera.webp" />
         </figure>
 
         <figure>

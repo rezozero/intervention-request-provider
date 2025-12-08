@@ -3,12 +3,5 @@ export default defineNuxtConfig({
     modules: ['../src/module', '@nuxt/image'],
     image: {
         provider: 'interventionRequest',
-        providers: {
-            interventionRequest: {
-                options: {
-                    imagesPath: 'images',
-                },
-            },
-        },
     },
 })
